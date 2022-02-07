@@ -7,7 +7,7 @@
 
   async function getFirstFour(){
     try {
-        const $axiosAsync = document.getElementById('firstFourProductContainer')
+        const $firstFourProductContainer = document.getElementById('firstFourProductContainer')
     
         let resProductApi = await axios.get(
             'https://saleprueba.herokuapp.com/api/products/firstFour',
@@ -46,12 +46,7 @@
                 </h1>
                 <h4 class="discountPrice">$ ${product.price}</h4>
               </div>
-              <div class="card-footer text-muted">
-                <button class="btn btn-primary mx-1">
-                  ADD
-                  <i class="fas fa-cart-plus mx-2"></i>
-                </button>
-              </div>
+              
             </div>
             </div>
                 
@@ -76,12 +71,7 @@
               </h4>
               <h1 class="text-dark">$ ${product.price}</h1>
             </div>
-            <div class="card-footer text-muted">
-              <button class="btn btn-primary mx-1">
-                ADD
-                <i class="fas fa-cart-plus mx-2"></i>
-              </button>
-            </div>
+            
           </div>
                    
                       `
@@ -89,7 +79,7 @@
           }
          
         })
-        $axiosAsync.appendChild($fragment)
+        $firstFourProductContainer.appendChild($fragment)
       } catch (error) {
           
       Swal.fire(

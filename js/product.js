@@ -16,7 +16,7 @@ const firstFourProductContainer = document.getElementById('firstFourProductConta
 
   async function getProduct() {
     try {
-      const $axiosAsync = document.getElementById('axios')
+      const $containerProduct = document.getElementById('containerProduct')
       let resProductApi = await axios.get(
         'https://saleprueba.herokuapp.com/api/products/all',
       )
@@ -97,7 +97,7 @@ const firstFourProductContainer = document.getElementById('firstFourProductConta
         }
        
       })
-      $axiosAsync.appendChild($fragment)
+      $containerProduct.appendChild($fragment)
     } catch (error) {
         
     Swal.fire(
