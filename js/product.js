@@ -83,7 +83,8 @@ const firstFourProductContainer = document.getElementById('firstFourProductConta
               <h1 class="text-dark">$ ${product.price}</h1>
             </div>
             <div class="card-footer text-muted">
-              <button class="btn btn-primary mx-1">
+              <button class="btn btn-primary mx-1" 
+                onclick="selectedProduct('${product.name}', '${product.id}', '${product.price}')">
                 ADD
                 <i class="fas fa-cart-plus mx-2"></i>
               </button>
@@ -144,12 +145,47 @@ const firstFourProductContainer = document.getElementById('firstFourProductConta
 // EventListener
 EventListeners();
 
+
+
+function selectedProduct(productName, productId,productPrice){
+
+    const product = {name: productName, id:productId, price:productPrice};
+    const productLocalStorage = JSON.parse(localStorage.getItem('productList') ) || [];
+
+    if(productLocalStorage.length>0){
+        if( !productLocalStorage.find(e => e.id === productId) ){
+            productLocalStorage.push(product);
+            localStorage.setItem('productList',JSON.stringify(productLocalStorage))
+        }
+    }else{
+        productLocalStorage.push(product)
+        localStorage.setItem('productList',JSON.stringify(productLocalStorage));
+    }
+
+
+
+    // Mensaje de agregar
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })      
+    Toast.fire({
+        icon: 'success',
+        title: productName +' agregado al carrito, Precio $'+ productPrice
+    })
+}
+
 function EventListeners() {
     $btnSearch.addEventListener('click',searchProduct );
     $btnCategory.addEventListener('click',searchCategory );
 }
-
-
 
 async function searchProduct(e){
     e.preventDefault();
@@ -244,7 +280,6 @@ async function searchProduct(e){
         console.log({'Error':error.message})
       }
 }
-
 
 async function searchCategory(e){
     
