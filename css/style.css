@@ -1,3 +1,16 @@
 body{
     font-family: 'Montserrat', sans-serif;
 }
+
+.bg-dark-50{
+    background-color: rgb(240, 240, 240);
+}
+
+
+.discount{
+    font-size: large;
+}
+
+.discountPrice{
+    text-decoration: line-through;
+}
