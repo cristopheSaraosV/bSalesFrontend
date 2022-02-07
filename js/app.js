@@ -108,7 +108,6 @@ EventListeners();
 
 function EventListeners() {
     btnSearch.addEventListener('click',searchProduct );
-    btnClear.addEventListener('click',redirect );
 }
 
 
@@ -130,7 +129,6 @@ async function searchProduct(e){
           `http://localhost:8080/api/products/search?product=${productSearch}`,
         )
         let resultProducts = await resProductApi
-        console.log(resultProducts);
         resultProducts.data.products.forEach((product) => {
             if(product.discount > 0){
                 const $card = document.createElement('div')
@@ -202,6 +200,11 @@ async function searchProduct(e){
         })
         $axiosAsync.appendChild($fragment)
       } catch (error) {
-        console.log(error)
+        Swal.fire(
+            'Ups! hubo un error',
+            'Intente revisar el nombre del productos e intente nuevamente',
+            'error'
+          )
+        console.log({'Error':error.message})
       }
 }
