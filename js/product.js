@@ -167,7 +167,7 @@ function selectedProduct(productName, productId,productPrice){
     // Mensaje de agregar
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'top-start',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
@@ -189,8 +189,9 @@ function EventListeners() {
 
 async function searchProduct(e){
     e.preventDefault();
-    const $axiosAsync = document.getElementById('axios')
-    $axiosAsync.innerHTML = ''
+    
+    const $containerProduct = document.getElementById('containerProduct')
+    $containerProduct.innerHTML = ''
     const $fragment = document.createDocumentFragment()
     const productSearch = inputSearch.value;
     try {
@@ -270,7 +271,7 @@ async function searchProduct(e){
                 $fragment.appendChild($card)
             }
         })
-        $axiosAsync.appendChild($fragment)
+        $containerProduct.appendChild($fragment)
       } catch (error) {
         Swal.fire(
             'Ups! hubo un error',
@@ -284,8 +285,8 @@ async function searchProduct(e){
 async function searchCategory(e){
     
     e.preventDefault();
-    const $axiosAsync = document.getElementById('axios')
-    $axiosAsync.innerHTML = ''
+    const $containerProduct = document.getElementById('containerProduct')
+    $containerProduct.innerHTML = ''
     const $fragment = document.createDocumentFragment()
     const categoriesSearch = inputCategory.value;
     try {
@@ -365,7 +366,7 @@ async function searchCategory(e){
                 $fragment.appendChild($card)
             }
         })
-        $axiosAsync.appendChild($fragment)
+        $containerProduct.appendChild($fragment)
       } catch (error) {
         Swal.fire(
             'Ups! hubo un error',
@@ -376,3 +377,4 @@ async function searchCategory(e){
       }
 
 }
+
