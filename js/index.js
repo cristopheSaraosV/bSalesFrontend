@@ -10,8 +10,11 @@
         const $axiosAsync = document.getElementById('firstFourProductContainer')
     
         let resProductApi = await axios.get(
-          'http://localhost:8080/api/products/firstFour',
-        )
+            'https://saleprueba.herokuapp.com/api/products/firstFour',
+          )
+        // let resProductApi = await axios.get(
+        //   'http://localhost:8080/api/products/firstFour',
+        // )
         let resultProducts = await resProductApi;
         resultProducts.data.products.forEach((product) => {
   
